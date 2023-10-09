@@ -1,6 +1,5 @@
 import React from "react";
 import Logo from "../../assets/RickAndMorty.png";
-
 import { styled } from "styled-components";
 import { NavLink } from "react-router-dom";
 
@@ -17,6 +16,9 @@ const NavBar = () => {
         <NavLink to={"Favorites"}>
           <li>Favorites</li>
         </NavLink>
+        <NavLink to={"detail"}>
+          <li>Detail</li>
+        </NavLink>
 
         <NavLink to={"/"}>
           <li>Logout</li>
@@ -29,19 +31,21 @@ const NavBar = () => {
 export default NavBar;
 
 const StyleNav = styled.nav`
+  background-color: #000;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   align-items: center;
   width: 100%;
-  height: auto;
+  height: 80px;
 
   img {
     width: 200px;
-    // margin-right: 0%;
   }
 
   ul {
     display: flex;
+    flex-wrap: wrap;
     gap: 100px;
     list-style: none;
   }

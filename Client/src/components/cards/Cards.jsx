@@ -1,29 +1,30 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import Card from "../card/Card";
 
 const Cards = () => {
   const allCharacters = useSelector((state) => state.allCharacters);
 
   return (
-    <div>
+    <ContainerCards>
       {allCharacters?.map((items) => {
         return (
-          <containerCards key={items.id}>
-            <p>{items.name}</p>
-            <img src={items.image} />
-          </containerCards>
+          <div key={items.id}>
+            <Card items={items} />;
+          </div>
         );
       })}
-    </div>
+    </ContainerCards>
   );
 };
 
 export default Cards;
 
-const containerCards = styled.div`
+const ContainerCards = styled.div`
   display: flex;
-  p {
-    color: blue;
-  }
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0 10px 0 10px;
+  gap: 20px;
 `;

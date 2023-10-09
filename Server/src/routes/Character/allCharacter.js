@@ -3,7 +3,7 @@ const allCharacterRouter = express.Router();
 const axios = require("axios");
 const allCharacters = require("../../controllers/allCharacter.");
 
-allCharacterRouter.get("/characters", async (req, res) => {
+allCharacterRouter.get("/character", async (req, res) => {
   try {
     const data = await allCharacters();
 

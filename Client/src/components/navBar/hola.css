@@ -5,4 +5,18 @@
   justify-content: space-around;
   justify-content: space-between;
   justify-content: space-evenly;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  background-color: #555555a2;
+  align-items: center;
+  justify-content: end;
+  object-fit: contain;
+  overflow: hidden;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  position: sticky;
+  line-height: 1.5;
+  display: inline-block;
+  align-self: center;
 }

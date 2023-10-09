@@ -8,6 +8,7 @@ import Register from "./components/register/register";
 import { useDispatch, useSelector } from "react-redux";
 import { Characters } from "./redux/actions";
 import { useEffect } from "react";
+import Detail from "./components/detail/Detail";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -26,6 +27,8 @@ const App = () => {
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/detail" element={<Detail />} />
+        <Route path="/detail/:id" element={<Detail />} />
         <Route path="/favorites" element={<Favorites />} />
       </Routes>
     </div>

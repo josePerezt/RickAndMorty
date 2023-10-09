@@ -1,7 +1,8 @@
-import { CHARACTERS } from "./type";
+import { CHARACTERS, DELETE_DETAIL, DETAIL } from "./type";
 
 const initialState = {
   allCharacters: [],
+  character: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -10,6 +11,17 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allCharacters: action.payload,
+      };
+    case DETAIL:
+      return {
+        ...state,
+        character: action.payload,
+      };
+
+    case DELETE_DETAIL:
+      return {
+        ...state,
+        character: {},
       };
     default:
       return state;
