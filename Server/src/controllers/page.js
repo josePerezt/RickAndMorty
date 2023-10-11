@@ -1,11 +1,10 @@
 const axios = require("axios");
 
-const allCharacters = async () => {
-  const ALL_URL = "https://rickandmortyapi.com/api/character";
-  const { data } = await axios(ALL_URL);
+const pageNext = async (id) => {
+  if (id > 46) throw new Error("Page not Found");
+  const UrlPage = `https://rickandmortyapi.com/api/character?page=${id}`;
 
-  if (!data) throw new Error("Data Not Found");
-
+  const { data } = await axios(UrlPage);
   const { info } = data;
   const { results } = data;
 
@@ -23,13 +22,12 @@ const allCharacters = async () => {
       };
     }
   );
-
-  const result = {
+  const newData = {
     info,
     cleanData,
   };
-
-  return result;
+  // console.log(newData);
+  return newData;
 };
 
-module.exports = allCharacters;
+module.exports = pageNext;

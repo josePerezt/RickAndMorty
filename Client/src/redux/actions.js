@@ -1,7 +1,8 @@
 import axios from "axios";
-import { CHARACTERS, DELETE_DETAIL, DETAIL } from "./type";
+import { CHARACTERS, DELETE_DETAIL, DETAIL, PAGE } from "./type";
 
 const URL = "http://localhost:3001/character";
+const UrlPage = "http://localhost:3001/characterPage?page=";
 
 export const Characters = () => {
   return async function (dispatch) {
@@ -13,7 +14,17 @@ export const Characters = () => {
 export const Character = (id) => {
   return async function (dispatch) {
     const { data } = await axios(`${URL}/${id}`);
+    console.log(`${URL}/${id}`);
     dispatch({ type: DETAIL, payload: data });
+  };
+};
+
+export const Pagination = (page) => {
+  return async function (dispatch) {
+    const { data } = await axios(`${UrlPage}${page}`);
+    console.log(`${UrlPage}${page}`);
+
+    dispatch({ type: PAGE, payload: data });
   };
 };
 

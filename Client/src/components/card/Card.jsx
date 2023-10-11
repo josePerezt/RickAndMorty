@@ -24,10 +24,12 @@ const ContainerCard = styled.div`
   position: relative;
   width: 250px;
   height: 350px;
-  margin: 10px 0 15px 0;
+  margin: 25px 0 15px 0;
   cursor: pointer;
   border-radius: 8px;
-  border: thin solid blue;
+  box-shadow: 2px 4px 10px 4px #292727a2;
+
+  // border: thin solid blue;
 
   img {
     overflow: hidden;

@@ -4,11 +4,11 @@ import styled from "styled-components";
 import Card from "../card/Card";
 
 const Cards = () => {
-  const allCharacters = useSelector((state) => state.allCharacters);
+  const { cleanData } = useSelector((state) => state.allCharacters);
 
   return (
     <ContainerCards>
-      {allCharacters?.map((items) => {
+      {cleanData?.map((items) => {
         return (
           <div key={items.id}>
             <Card items={items} />;

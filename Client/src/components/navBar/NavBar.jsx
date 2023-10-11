@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <StyleNav>
+    <StyleNav id="navBar" className="position">
       <div>
         <img src={Logo} />
       </div>
@@ -37,7 +37,6 @@ const StyleNav = styled.nav`
   flex-wrap: wrap;
   align-items: center;
   width: 100%;
-  height: 80px;
 
   img {
     width: 200px;

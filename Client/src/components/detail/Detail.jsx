@@ -2,19 +2,24 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { Character, DeleteChar } from "../../redux/actions";
-import image from "../../assets/defaultImage.png";
+import imageDefault from "../../assets/defaultImage.png";
 import Button from "../button/Button";
 import styled from "styled-components";
 
 const Detail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const characterId = useSelector((state) => state.character);
+  const character = useSelector((state) => state.character);
   const dispatch = useDispatch();
+
+  const { name, gender, status, species, origin, image } = character;
 
   useEffect(() => {
     dispatch(Character(id));
-    console.log(characterId);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }, []);
 
   const handlerClick = () => {
@@ -25,21 +30,21 @@ const Detail = () => {
   return (
     <Container>
       <ContainerText>
-        <h2> {characterId.name}</h2>
-        <h3>GENDER: {characterId.gender}</h3>
-        <h3>STATUS: {characterId.status}</h3>
-        <h3>SPECIES: {characterId.species}</h3>
-        <h3>ORIGIN: {characterId.origin}</h3>
+        <h2> {name ? name : "undefined"}</h2>
+        <h3>GENDER: {gender ? gender : "undefined"}</h3>
+        <h3>STATUS: {status ? status : "undefined"}</h3>
+        <h3>SPECIES: {species ? species : "undefined"}</h3>
+        <h3>ORIGIN: {origin ? origin : "undefined"}</h3>
       </ContainerText>
       <ContainerImage>
-        {characterId.image ? (
-          <img
-            src={characterId.image}
-            alt={characterId.name}
-            className="image"
-          />
+        {image ? (
+          <img src={image} alt={name} className="image" />
         ) : (
-          <img className="defaultImage" src={image} alt={"imageDefault"} />
+          <img
+            className="defaultImage"
+            src={imageDefault}
+            alt={"imageDefault"}
+          />
         )}
       </ContainerImage>
       <div className="containerBtn">
@@ -70,13 +75,14 @@ const Container = styled.div`
 const ContainerText = styled.div`
   text-align: center;
   border-radius: 8px;
+  width: 40%;
   box-shadow: 2px 4px 10px 4px #555555a2;
   // border: thin solid yellow;
 
   h2 {
     margin-top: 100px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 4rem;
+    font-size: 3rem;
   }
 
   h3 {
