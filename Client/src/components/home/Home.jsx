@@ -10,7 +10,6 @@ const Home = () => {
   const [page, setPage] = useState(1);
   const { info } = useSelector((state) => state.allCharacters);
   const dispatch = useDispatch();
-  console.log(page);
 
   const scrollToSection = () => {
     const section = document.getElementById("navBar");

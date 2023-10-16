@@ -1,8 +1,17 @@
-import { CHARACTERS, DELETE_DETAIL, DETAIL, PAGE } from "./type";
+import {
+  ADD_FAVORITES,
+  CHARACTERS,
+  DELETE_DETAIL,
+  DETAIL,
+  PAGE,
+  REMOVE_FAVORITES,
+} from "./type";
 
 const initialState = {
   allCharacters: {},
+  copyAll: {},
   character: {},
+  favorites: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -11,6 +20,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allCharacters: action.payload,
+        copyAll: action.payload,
       };
     case DETAIL:
       return {
@@ -21,12 +31,46 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allCharacters: action.payload,
+        copyAll: action.payload,
       };
 
     case DELETE_DETAIL:
       return {
         ...state,
         character: {},
+      };
+    case ADD_FAVORITES:
+      const updateCharacters = state.allCharacters.cleanData?.filter(
+        (char) => char.id !== action.payload?.id
+      );
+
+      return {
+        ...state,
+        allCharacters: {
+          ...state.allCharacters,
+          cleanData: updateCharacters,
+        },
+
+        favorites: [...state.favorites, action.payload],
+      };
+    case REMOVE_FAVORITES:
+      const removeChar = state.favorites.filter(
+        (char) => char.id !== action.payload.id
+      );
+      state.allCharacters.cleanData.push(action.payload);
+      state.allCharacters.cleanData.sort((a, b) => {
+        if (a.id > b.id) {
+          return 1;
+        }
+        if (a.id < b.id) {
+          return -1;
+        }
+        return 0;
+      });
+      return {
+        ...state,
+
+        favorites: removeChar,
       };
     default:
       return state;

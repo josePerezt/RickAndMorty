@@ -1,5 +1,12 @@
 import axios from "axios";
-import { CHARACTERS, DELETE_DETAIL, DETAIL, PAGE } from "./type";
+import {
+  ADD_FAVORITES,
+  CHARACTERS,
+  DELETE_DETAIL,
+  DETAIL,
+  PAGE,
+  REMOVE_FAVORITES,
+} from "./type";
 
 const URL = "http://localhost:3001/character";
 const UrlPage = "http://localhost:3001/characterPage?page=";
@@ -31,5 +38,17 @@ export const Pagination = (page) => {
 export const DeleteChar = () => {
   return async function (dispatch) {
     dispatch({ type: DELETE_DETAIL });
+  };
+};
+
+export const CharFav = (char) => {
+  return function (dispatch) {
+    dispatch({ type: ADD_FAVORITES, payload: char });
+  };
+};
+
+export const RemoveFav = (char) => {
+  return function (dispatch) {
+    dispatch({ type: REMOVE_FAVORITES, payload: char });
   };
 };
