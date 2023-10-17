@@ -1,10 +1,12 @@
 import axios from "axios";
+
 import {
   ADD_FAVORITES,
   CHARACTERS,
   DELETE_DETAIL,
   DETAIL,
   PAGE,
+  REGISTER_USER,
   REMOVE_FAVORITES,
 } from "./type";
 
@@ -50,5 +52,11 @@ export const CharFav = (char) => {
 export const RemoveFav = (char) => {
   return function (dispatch) {
     dispatch({ type: REMOVE_FAVORITES, payload: char });
+  };
+};
+
+export const RegisterUser = () => {
+  return function (dispatch) {
+    dispatch({ type: REGISTER_USER });
   };
 };

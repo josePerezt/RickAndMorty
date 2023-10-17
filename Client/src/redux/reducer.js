@@ -4,6 +4,7 @@ import {
   DELETE_DETAIL,
   DETAIL,
   PAGE,
+  REGISTER_USER,
   REMOVE_FAVORITES,
 } from "./type";
 
@@ -72,6 +73,11 @@ const reducer = (state = initialState, action) => {
 
         favorites: removeChar,
       };
+    case REGISTER_USER:
+      return {
+        ...state,
+      };
+
     default:
       return state;
   }
