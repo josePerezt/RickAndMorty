@@ -36,7 +36,6 @@ const Register = () => {
       );
       if (result) navigate("/");
     } catch (error) {
-      console.log(error.code);
       if (error.code === "auth/email-already-in-use")
         setErr({
           ...err,
@@ -84,11 +83,10 @@ const Register = () => {
         <ContainerError>{err.password && <p>{err.password}</p>}</ContainerError>
 
         <button disabled={isFormEmpty || isError ? true : false}>Send</button>
+        <NavLink to="/" className="login">
+          Login
+        </NavLink>
       </Form>
-
-      <NavLink to="/" className="login">
-        Login
-      </NavLink>
     </ContainerRegister>
   );
 };
@@ -109,8 +107,8 @@ const ContainerRegister = styled.div`
   }
   .login {
     margin-top: 25px;
-    text-decoration: none;
-    font-size: 1.5rem;
+
+    font-size: 1.2rem;
     font-family: arial;
     color: #000;
     cursor: pointer;

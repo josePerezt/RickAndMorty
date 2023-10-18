@@ -1,6 +1,7 @@
 import {
   ADD_FAVORITES,
   CHARACTERS,
+  CURRENT_USER,
   DELETE_DETAIL,
   DETAIL,
   PAGE,
@@ -13,6 +14,7 @@ const initialState = {
   copyAll: {},
   character: {},
   favorites: [],
+  currentUser: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -76,6 +78,12 @@ const reducer = (state = initialState, action) => {
     case REGISTER_USER:
       return {
         ...state,
+      };
+    case CURRENT_USER:
+      const { accessToken, email } = action.payload;
+      return {
+        ...state,
+        currentUser: { accessToken, email },
       };
 
     default:

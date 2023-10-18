@@ -2,8 +2,10 @@ import React from "react";
 import Logo from "../../assets/RickAndMorty.png";
 import { styled } from "styled-components";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
+  const currentUser = useSelector((state) => state.currentUser);
   return (
     <StyleNav id="navBar" className="position">
       <div>
@@ -23,6 +25,7 @@ const NavBar = () => {
         <NavLink to={"/"}>
           <li>Logout</li>
         </NavLink>
+        <li>{currentUser.email}</li>
       </ul>
     </StyleNav>
   );
@@ -54,5 +57,6 @@ const StyleNav = styled.nav`
     font-family: Arial, sans-serif;
     font-weight: bold;
     cursor: pointer;
+    color: #fff;
   }
 `;

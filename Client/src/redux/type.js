@@ -5,3 +5,4 @@ export const PAGE = "PAGE";
 export const ADD_FAVORITES = "ADD_FAVORITES";
 export const REMOVE_FAVORITES = "REMOVE_FAVORITES";
 export const REGISTER_USER = "REGISTER_USER";
+export const CURRENT_USER = "CURRENT_USER";

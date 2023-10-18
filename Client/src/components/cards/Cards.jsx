@@ -11,7 +11,7 @@ const Cards = () => {
       {cleanData?.map((items) => {
         return (
           <div key={items.id}>
-            <Card items={items} />;
+            <Card items={items} />
           </div>
         );
       })}

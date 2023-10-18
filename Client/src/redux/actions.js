@@ -3,12 +3,15 @@ import axios from "axios";
 import {
   ADD_FAVORITES,
   CHARACTERS,
+  CURRENT_USER,
   DELETE_DETAIL,
   DETAIL,
   PAGE,
   REGISTER_USER,
   REMOVE_FAVORITES,
 } from "./type";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebase/firebase";
 
 const URL = "http://localhost:3001/character";
 const UrlPage = "http://localhost:3001/characterPage?page=";
@@ -58,5 +61,14 @@ export const RemoveFav = (char) => {
 export const RegisterUser = () => {
   return function (dispatch) {
     dispatch({ type: REGISTER_USER });
+  };
+};
+
+export const CurrentUser = () => {
+  return async function (dispatch) {
+    let user;
+    await onAuthStateChanged(auth, (current) => (user = current));
+
+    dispatch({ type: CURRENT_USER, payload: user });
   };
 };
