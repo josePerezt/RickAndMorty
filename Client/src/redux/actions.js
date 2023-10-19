@@ -6,6 +6,7 @@ import {
   CURRENT_USER,
   DELETE_DETAIL,
   DETAIL,
+  LOGOUT,
   PAGE,
   REGISTER_USER,
   REMOVE_FAVORITES,
@@ -70,5 +71,11 @@ export const CurrentUser = () => {
     await onAuthStateChanged(auth, (current) => (user = current));
 
     dispatch({ type: CURRENT_USER, payload: user });
+  };
+};
+
+export const Logout = () => {
+  return function (dispatch) {
+    dispatch({ type: LOGOUT });
   };
 };

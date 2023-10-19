@@ -4,6 +4,7 @@ import {
   CURRENT_USER,
   DELETE_DETAIL,
   DETAIL,
+  LOGOUT,
   PAGE,
   REGISTER_USER,
   REMOVE_FAVORITES,
@@ -84,6 +85,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         currentUser: { accessToken, email },
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        currentUser: {},
       };
 
     default:

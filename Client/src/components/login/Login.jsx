@@ -1,20 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { styled } from "styled-components";
 import { NavLink, useNavigate } from "react-router-dom";
 
-import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { CurrentUser } from "../../redux/actions";
 
 const Login = () => {
   const navigate = useNavigate();
-
-  ///////////////////////////////
   const dispatch = useDispatch();
-  ////////////////////////////////
+  const currentUser = useSelector((state) => state.currentUser);
+  console.log(currentUser);
 
-  const [currentUser, setCurrentUser] = useState(null);
   const [user, setUser] = useState({
     email: "",
     password: "",

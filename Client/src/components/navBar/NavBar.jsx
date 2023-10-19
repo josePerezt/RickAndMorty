@@ -2,13 +2,14 @@ import React from "react";
 import Logo from "../../assets/RickAndMorty.png";
 import { styled } from "styled-components";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Logout } from "../../redux/actions";
 
 const NavBar = () => {
   const currentUser = useSelector((state) => state.currentUser);
-
+  const dispatch = useDispatch();
   const handlerLogout = () => {
-    console.log(currentUser);
+    dispatch(Logout());
   };
   return (
     <StyleNav id="navBar" className="position">
