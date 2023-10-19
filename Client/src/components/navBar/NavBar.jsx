@@ -6,6 +6,10 @@ import { useSelector } from "react-redux";
 
 const NavBar = () => {
   const currentUser = useSelector((state) => state.currentUser);
+
+  const handlerLogout = () => {
+    console.log(currentUser);
+  };
   return (
     <StyleNav id="navBar" className="position">
       <div>
@@ -23,7 +27,7 @@ const NavBar = () => {
         </NavLink>
 
         <NavLink to={"/"}>
-          <li>Logout</li>
+          <li onClick={handlerLogout}>Logout</li>
         </NavLink>
         <li>{currentUser.email}</li>
       </ul>

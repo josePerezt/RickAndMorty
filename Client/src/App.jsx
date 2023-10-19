@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Characters } from "./redux/actions";
 import { useEffect } from "react";
 import Detail from "./components/detail/Detail";
+import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -26,10 +27,38 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/detail" element={<Detail />} />
-        <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/detail"
+          element={
+            <ProtectedRoute>
+              <Detail />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/detail/:id"
+          element={
+            <ProtectedRoute>
+              <Detail />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/favorites"
+          element={
+            <ProtectedRoute>
+              <Favorites />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </div>
   );
