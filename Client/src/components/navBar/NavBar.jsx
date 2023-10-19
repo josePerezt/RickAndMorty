@@ -17,10 +17,10 @@ const NavBar = () => {
         <img src={Logo} />
       </div>
       <ul>
-        <NavLink to={"Home"}>
+        <NavLink to={"home"}>
           <li>Home</li>
         </NavLink>
-        <NavLink to={"Favorites"}>
+        <NavLink to={"favorites"}>
           <li>Favorites</li>
         </NavLink>
         <NavLink to={"detail"}>

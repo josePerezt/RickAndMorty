@@ -15,7 +15,9 @@ const Detail = () => {
   const { name, gender, status, species, origin, image } = character;
 
   useEffect(() => {
-    dispatch(Character(id));
+    if (id) {
+      dispatch(Character(id));
+    }
     window.scrollTo({
       top: 0,
       behavior: "smooth",

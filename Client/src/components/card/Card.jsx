@@ -11,7 +11,7 @@ const Card = ({ items }) => {
   const { id, name, image } = items;
 
   const handlerFavorite = () => {
-    if (location.pathname === "/Home") {
+    if (location.pathname === "/home") {
       const fav = {
         id,
         name,
@@ -32,7 +32,7 @@ const Card = ({ items }) => {
   // console.log(location.pathname);
   return (
     <ContainerCard>
-      {location.pathname === "/Favorites" ? (
+      {location.pathname === "/favorites" ? (
         <p className="favorite" onClick={handlerFavorite}>
           💗
         </p>

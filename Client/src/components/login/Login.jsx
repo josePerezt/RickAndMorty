@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { styled } from "styled-components";
 import { NavLink, useNavigate } from "react-router-dom";
-
+import { PiEyeClosed, PiEye } from "react-icons/pi";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,8 +10,9 @@ import { CurrentUser } from "../../redux/actions";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [visible, setVisible] = useState(false);
+
   const currentUser = useSelector((state) => state.currentUser);
-  console.log(currentUser);
 
   const [user, setUser] = useState({
     email: "",
@@ -21,6 +22,10 @@ const Login = () => {
     email: "",
     password: "",
   });
+
+  const handlerVisible = () => {
+    setVisible(!visible);
+  };
 
   const handleChange = ({ target: { name, value } }) => {
     setUser({
@@ -54,7 +59,7 @@ const Login = () => {
   };
 
   return (
-    <ContainerRegister>
+    <ContainerLogin>
       <h1>Log in</h1>
       <Form onSubmit={handleSubmit}>
         <input
@@ -67,13 +72,16 @@ const Login = () => {
         />
         <ContainerError>{err.email && <p></p>}</ContainerError>
         <input
-          type="password"
+          type={visible ? "text" : "password"}
           name="password"
           id="password"
           placeholder="password"
           className="camp"
           onChange={handleChange}
         />
+        <div onClick={handlerVisible} className="eyes">
+          {visible ? <PiEye size={25} /> : <PiEyeClosed size={25} />}
+        </div>
         <ContainerError>{err.email && <p>{err.email}</p>}</ContainerError>
 
         <button disabled={isFormEmpty ? true : false}>Log in</button>
@@ -81,12 +89,13 @@ const Login = () => {
           Register
         </NavLink>
       </Form>
-    </ContainerRegister>
+    </ContainerLogin>
   );
 };
 
 export default Login;
-const ContainerRegister = styled.div`
+const ContainerLogin = styled.div`
+  background-image: linear-gradient(45deg, #1f9202, #02924a, #2671e2, #02924a);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -106,6 +115,13 @@ const ContainerRegister = styled.div`
     font-family: arial;
     color: #000;
     cursor: pointer;
+  }
+  .eyes {
+    background-color: #fff;
+    position: absolute;
+    height: 20px;
+    margin-bottom: 62px;
+    margin-left: 24%;
   }
 `;
 

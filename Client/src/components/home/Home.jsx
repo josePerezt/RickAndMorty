@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Cards from "../cards/Cards";
 import Button from "../button/Button";
@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Pagination } from "../../redux/actions";
 
 const Home = () => {
-  const [disabled, setDisabled] = useState(true);
   const [page, setPage] = useState(1);
   const { info } = useSelector((state) => state.allCharacters);
   const dispatch = useDispatch();
@@ -42,6 +41,7 @@ const Home = () => {
       });
     }
   };
+  useEffect(() => {}, []);
 
   return (
     <StyleHome>

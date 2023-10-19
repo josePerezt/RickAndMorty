@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { styled } from "styled-components";
 import { NavLink, useNavigate } from "react-router-dom";
-
+import Swal from "sweetalert2";
+import { PiEyeClosed, PiEye } from "react-icons/pi";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
 
 const Register = () => {
   const navigate = useNavigate();
+  const [visible, setVisible] = useState(false);
   const [userRegister, setUserRegister] = useState({
     email: "",
     password: "",
@@ -15,6 +17,12 @@ const Register = () => {
     email: "",
     password: "",
   });
+  const isFormEmpty = !userRegister.email || !userRegister.password;
+  const isError = err.email || err.password;
+
+  const handlerVisible = () => {
+    setVisible(!visible);
+  };
 
   const handleChange = ({ target: { name, value } }) => {
     setUserRegister({
@@ -24,8 +32,6 @@ const Register = () => {
     if (userRegister.password.length > 5) setErr({ ...err, password: "" });
   };
 
-  const isFormEmpty = !userRegister.email || !userRegister.password;
-  const isError = err.email || err.password;
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -34,7 +40,17 @@ const Register = () => {
         userRegister.email,
         userRegister.password
       );
-      if (result) navigate("/");
+      if (result) {
+        Swal.fire({
+          title: "Usuario creado con exito",
+          text: "ya puedes iniciar sesion",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+
+        navigate("/");
+      }
     } catch (error) {
       if (error.code === "auth/email-already-in-use")
         setErr({
@@ -73,13 +89,16 @@ const Register = () => {
         />
         <ContainerError>{err.email && <p>{err.email}</p>}</ContainerError>
         <input
-          type="password"
+          type={visible ? "text" : "password"}
           name="password"
           id="password"
           placeholder="password"
           className="camp"
           onChange={handleChange}
         />
+        <div onClick={handlerVisible} className="eyes">
+          {visible ? <PiEye size={25} /> : <PiEyeClosed size={25} />}
+        </div>
         <ContainerError>{err.password && <p>{err.password}</p>}</ContainerError>
 
         <button disabled={isFormEmpty || isError ? true : false}>Send</button>
@@ -112,6 +131,13 @@ const ContainerRegister = styled.div`
     font-family: arial;
     color: #000;
     cursor: pointer;
+  }
+  .eyes {
+    background-color: #fff;
+    position: absolute;
+    height: 20px;
+    margin-bottom: 62px;
+    margin-left: 24%;
   }
 `;
 
