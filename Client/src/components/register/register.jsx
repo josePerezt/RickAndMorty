@@ -3,6 +3,7 @@ import { styled } from "styled-components";
 import { NavLink, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { PiEyeClosed, PiEye } from "react-icons/pi";
+import fondoRegister from "../../assets/fondoregister.jpg";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
 
@@ -83,7 +84,7 @@ const Register = () => {
           type="email"
           name="email"
           id="email"
-          placeholder="youmail@company.ltd"
+          placeholder="yourEmail@company.ltd"
           className="camp"
           onChange={handleChange}
         />
@@ -92,7 +93,7 @@ const Register = () => {
           type={visible ? "text" : "password"}
           name="password"
           id="password"
-          placeholder="password"
+          placeholder="*******"
           className="camp"
           onChange={handleChange}
         />
@@ -112,28 +113,35 @@ const Register = () => {
 
 export default Register;
 const ContainerRegister = styled.div`
+  background-color: black;
+  background-image: url(${fondoRegister});
+  background-size: cover;
+
+  background-position: center;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-
+  transition: background-image 2s;
   h1 {
+    color: #fff;
     font-family: arial;
     font-size: 3rem;
     margin-top: -100px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
   }
   .login {
     margin-top: 25px;
-
+    color: #fff;
     font-size: 1.2rem;
     font-family: arial;
-    color: #000;
     cursor: pointer;
   }
   .eyes {
-    background-color: #fff;
+    cursor: pointer;
+    color: #fff;
     position: absolute;
     height: 20px;
     margin-bottom: 62px;
@@ -142,7 +150,8 @@ const ContainerRegister = styled.div`
 `;
 
 const Form = styled.form`
-  box-shadow: 2px 4px 10px 4px #292727a2;
+  box-shadow: 2px 4px 10px 4px #28e9f9;
+  background-color:#000000a1;
   border-radius: 5px;
   width: 30%;
   height: 50vh;
@@ -152,15 +161,44 @@ const Form = styled.form`
   align-items: center;
   gap: 10px;
   .camp {
+    background-color: transparent;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 2px solid #2a0a75;
+    outline: none;
+    color: #fff;
     width: 90%;
     height: 4vh;
   }
+  .camp::placeholder {
+    color: #ffffff75;
+    padding: 10px;
+  }
+  .camp:-webkit-autofill {
+    border: 1px solid transparent;
+  }
 
   button {
+    background-color:#2a0a75;
     cursor: pointer;
+    border-radius: 16px;
+    border-color:transparent;S
+    font-weight: bold;
+    color: #fff;
     width: 60%;
     height: 30px;
+    transition:background-color 0.4s;
+    &:hover{
+      background-color:#481492;
+    }
   }
+   button:disabled{
+    background:#571a9b;
+    color:#ffffff75;
+    
+  }
+
 `;
 
 const ContainerError = styled.div`
