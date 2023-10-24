@@ -75,14 +75,17 @@ const ContainerBTN = styled.div`
   gap: 15px;
   width: 100%;
   justify-content: center;
+
   .container_count {
     display: flex;
     justify-content: center;
     align-items: center;
     border: thin solid black;
     border-radius: 5px;
-    border: thin solid #178a00c2;
-    color: #178a00c2;
+    border: thin solid transparent;
+    box-shadow: 1px 4px 12px 4px #d400ff;
+
+    color: #fff;
     width: 50px;
     height: 50px;
   }
@@ -94,13 +97,18 @@ const ContainerBTN = styled.div`
     border: thin solid black;
     border-radius: 50%;
     border: thin solid transparent;
-    background-color: #178a00c2;
+    background-color: #161360;
     margin-right: -30vw;
     margin-left: 25vw;
-
     width: 50px;
     height: 50px;
+    transition: background-color 0.5s;
+
+    &:hover {
+      background-color: blue;
+    }
   }
+
   .link {
     color: #fff;
     font-weight: bold;

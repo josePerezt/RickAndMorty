@@ -17,20 +17,20 @@ const NavBar = () => {
         <img src={Logo} />
       </div>
       <ul>
-        <NavLink to={"home"}>
+        <NavLink to={"home"} className="link">
           <li>Home</li>
         </NavLink>
-        <NavLink to={"favorites"}>
+        <NavLink to={"favorites"} className="link">
           <li>Favorites</li>
         </NavLink>
-        <NavLink to={"detail"}>
+        <NavLink to={"detail"} className="link">
           <li>Detail</li>
         </NavLink>
 
-        <NavLink to={"/"}>
+        <NavLink to={"/"} className="link">
           <li onClick={handlerLogout}>Logout</li>
         </NavLink>
-        <li>{currentUser.email}</li>
+        <li>{currentUser.email}🟢</li>
       </ul>
     </StyleNav>
   );
@@ -39,7 +39,6 @@ const NavBar = () => {
 export default NavBar;
 
 const StyleNav = styled.nav`
-  background-color: #000;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -63,5 +62,9 @@ const StyleNav = styled.nav`
     font-weight: bold;
     cursor: pointer;
     color: #fff;
+  }
+
+  .link {
+    text-decoration: none;
   }
 `;

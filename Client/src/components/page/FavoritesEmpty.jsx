@@ -19,11 +19,12 @@ const PageEmpty = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 83vh;
   padding: 20px;
   h1 {
-    color: black;
+    color: #fff;
     font-family: arial;
-    margin-top: 30vh;
+
     text-align: center;
   }
 

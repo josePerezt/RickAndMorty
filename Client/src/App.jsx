@@ -10,6 +10,7 @@ import { Characters } from "./redux/actions";
 import { useEffect } from "react";
 import Detail from "./components/detail/Detail";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
+import styled from "styled-components";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const App = () => {
   const location = useLocation();
 
   return (
-    <div>
+    <ContainerApp>
       {location.pathname !== "/" && location.pathname !== "/register" && (
         <NavBar />
       )}
@@ -60,8 +61,12 @@ const App = () => {
           }
         />
       </Routes>
-    </div>
+    </ContainerApp>
   );
 };
 
 export default App;
+
+const ContainerApp = styled.div`
+  background-image: linear-gradient(45deg, #bd43bc, #620282, #34316b, #34316b);
+`;

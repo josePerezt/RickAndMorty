@@ -64,11 +64,10 @@ const Container = styled.div`
   flex-wrap: wrap;
   height: 100vh;
   margin-top: 15px;
-  // border: thin solid red;
+
   .containerBtn {
     margin-top: 30px;
     width: 100%;
-    // border: thin solid green;
     display: flex;
     justify-content: center;
   }
@@ -78,8 +77,7 @@ const ContainerText = styled.div`
   text-align: center;
   border-radius: 8px;
   width: 40%;
-  box-shadow: 2px 4px 10px 4px #555555a2;
-  // border: thin solid yellow;
+  box-shadow: 2px 4px 10px 4px #d400ff;
 
   h2 {
     margin-top: 100px;
@@ -99,15 +97,13 @@ const ContainerImage = styled.div`
   justify-content: center;
   margin-top: 15px;
 
-  // border: thin solid blue;
-
   .defaultImage {
     width: 350px;
     height: 350px;
   }
 
   img {
-    box-shadow: 2px 4px 10px 4px #555555a2;
+    box-shadow: 2px 4px 10px 4px #d400ff;
 
     border-radius: 8px;
   }

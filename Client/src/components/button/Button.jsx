@@ -15,12 +15,14 @@ const Btn = styled.button`
   height: 50px;
   border-radius: 50%;
   border-color: transparent;
-  background-color: #178a00c2;
+  background-color: #161360;
   color: #fff;
   cursor: pointer;
   font-weight: bold;
+  tex-alig: center;
+  transition: background-color 0.5s;
 
   &:hover {
-    background-color: black;
+    background-color: #2722d0;
   }
 `;
