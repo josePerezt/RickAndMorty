@@ -35,9 +35,7 @@ export const Character = (id) => {
 export const Pagination = (page) => {
   return async function (dispatch) {
     const { data } = await axios(`${UrlPage}${page}`);
-    console.log(`${UrlPage}${page}`);
-
-    dispatch({ type: PAGE, payload: data });
+    dispatch({ type: PAGE, payload: { data, page } });
   };
 };
 

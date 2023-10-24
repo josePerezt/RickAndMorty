@@ -16,6 +16,7 @@ const initialState = {
   character: {},
   favorites: [],
   currentUser: {},
+  numPage: 1,
 };
 
 const reducer = (state = initialState, action) => {
@@ -32,9 +33,17 @@ const reducer = (state = initialState, action) => {
         character: action.payload,
       };
     case PAGE:
+      let { cleanData } = action.payload.data;
+      const newData = cleanData.filter((char) => {
+        return !state.favorites.some((fav) => fav.id === char.id);
+      });
+      console.log(action.payload);
+      action.payload.data.cleanData = newData;
+
       return {
         ...state,
-        allCharacters: action.payload,
+        allCharacters: action.payload.data,
+        numPage: action.payload.page,
         copyAll: action.payload,
       };
 

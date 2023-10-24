@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Cards from "../cards/Cards";
 import Button from "../button/Button";
@@ -6,8 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Pagination } from "../../redux/actions";
 
 const Home = () => {
-  const [page, setPage] = useState(1);
   const { info } = useSelector((state) => state.allCharacters);
+  const numPage = useSelector((state) => state.numPage);
+  const user = useSelector((state) => state.currentUser);
   const dispatch = useDispatch();
 
   const scrollToSection = () => {
@@ -20,8 +21,7 @@ const Home = () => {
     if (!next) {
       setDisabled(true);
     } else {
-      setPage(page + 1);
-      dispatch(Pagination(page + 1));
+      dispatch(Pagination(numPage + 1));
       window.scrollTo({
         top: 0,
         behavior: "smooth",
@@ -31,9 +31,9 @@ const Home = () => {
 
   const handlerPagePrev = () => {
     const { prev } = info;
+    console.log(prev);
     if (prev) {
-      setPage(page - 1);
-      dispatch(Pagination(page - 1));
+      dispatch(Pagination(numPage - 1));
 
       window.scrollTo({
         top: 0,
@@ -41,7 +41,6 @@ const Home = () => {
       });
     }
   };
-  useEffect(() => {}, []);
 
   return (
     <StyleHome>
@@ -49,7 +48,7 @@ const Home = () => {
       <ContainerBTN>
         {info?.prev ? <Button onClick={handlerPagePrev}>PREV</Button> : null}
         <div className="container_count">
-          <h3>{page}/42</h3>
+          <h3>{numPage}/42</h3>
         </div>
         {info?.next ? <Button onClick={handlerPageNext}>NEXT</Button> : null}
         <div className="container_link">
