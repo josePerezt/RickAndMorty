@@ -10,6 +10,7 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const handlerLogout = () => {
     dispatch(Logout());
+    localStorage.removeItem("hasShownAlert");
   };
   return (
     <StyleNav id="navBar" className="position">

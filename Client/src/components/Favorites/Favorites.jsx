@@ -27,10 +27,12 @@ const Favorites = () => {
 export default Favorites;
 
 const ContainerFav = styled.div`
+  // border: thin solid red;
   display: flex;
   justify-content: center;
+
   flex-wrap: wrap;
-  height: 100vh;
+
   .containerCard {
     display: flex;
     padding: 0 10px 0 10px;

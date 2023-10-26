@@ -68,5 +68,7 @@ const App = () => {
 export default App;
 
 const ContainerApp = styled.div`
+  width: 100%;
+  height: 100%;
   background-image: linear-gradient(45deg, #bd43bc, #620282, #34316b, #34316b);
 `;

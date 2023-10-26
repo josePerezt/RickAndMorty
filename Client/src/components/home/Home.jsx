@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Cards from "../cards/Cards";
 import Button from "../button/Button";
+import Swal from "sweetalert2";
+
 import { useDispatch, useSelector } from "react-redux";
 import { Pagination } from "../../redux/actions";
 
@@ -41,6 +43,23 @@ const Home = () => {
       });
     }
   };
+
+  const [hasShownAlert, setHasShownAlert] = useState(false);
+
+  useEffect(() => {
+    const hasShownAlertBefore = localStorage.getItem("hasShownAlert");
+    if (!hasShownAlertBefore && !hasShownAlert) {
+      Swal.fire({
+        title: "Favorites",
+        text: "haz click sobre el 🤍 y luego ve a la seccion de favoritos para ver tus personajes...",
+        icon: "info",
+      });
+      localStorage.setItem("hasShownAlert", "true");
+
+      // Actualiza el estado local para evitar futuras ejecuciones de la alerta
+      setHasShownAlert(true);
+    }
+  }, [hasShownAlert]);
 
   return (
     <StyleHome>
